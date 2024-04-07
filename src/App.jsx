@@ -54,8 +54,8 @@ const App = () => {
 		setCitySuggestions([])
 		setCity('')
 		const cityName = `${data.location.name}, ${data.location.region}, ${data.location.country}`
-		setCurrentWeather({...data.current, cityName: cityName, localtime: data.location.localtime})
-		setForecastWeather({...data.forecastWeather, cityName: cityName})
+		setCurrentWeather({ ...data.current, cityName: cityName, localtime: data.location.localtime })
+		setForecastWeather({ ...data.forecastWeather, cityName: cityName })
 	}
 
 	return (
@@ -71,7 +71,7 @@ const App = () => {
 					handleCityClick={handleCityClick}
 					citySuggestions={citySuggestions} />
 			</div>
-			{currentWeather && <WeatherCard weather={currentWeather}/>}
+			{currentWeather && <WeatherCard weather={currentWeather} />}
 		</div>
 	);
 }
