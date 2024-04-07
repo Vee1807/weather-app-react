@@ -1,8 +1,8 @@
 import './App.css'
-import SearchBar from './components/SearchBar'
-import WeatherCard from './components/CurrentWeatherCard'
-import { useState, useEffect } from 'react'
-
+import SearchBar from './components/SearchBar/SearchBar'
+import WeatherCard from './components/CurrentWeatherCard/CurrentWeatherCard'
+import { useState, useEffect, useContext } from 'react'
+import { ThemeContext } from "./Theme.jsx"
 
 const API_KEY = '75b36898c1284f41a32114039240704'
 const citySuggestionsURL = `https://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=`
@@ -10,6 +10,10 @@ const getCurrentWeatherURL = (coord) => {
 	return `https://api.weatherapi.com/v1/forecast.json?key=75b36898c1284f41a32114039240704&q=${coord}&days=3&aqi=no&alerts=no`
 }
 const App = () => {
+
+	const { theme, toggleTheme } = useContext(ThemeContext)
+
+
 	const [city, setCity] = useState('')
 	const [citySuggestions, setCitySuggestions] = useState([])
 	const [currentWeather, setCurrentWeather] = useState(null)
@@ -23,7 +27,8 @@ const App = () => {
 				const cityData = data.map(suggestion => {
 					return {
 						cityName: suggestion.name,
-						cityDetails: `${suggestion.region}, ${suggestion.country}`,
+						cityDetails: suggestion.region.length !== 0 ?
+							`${suggestion.region}, ${suggestion.country}` : suggestion.country,
 						cityCoord: `${suggestion.lat},${suggestion.lon}`
 					}
 				})
@@ -53,16 +58,35 @@ const App = () => {
 		const data = await res.json()
 		setCitySuggestions([])
 		setCity('')
-		const cityName = `${data.location.name}, ${data.location.region}, ${data.location.country}`
-		setCurrentWeather({ ...data.current, cityName: cityName, localtime: data.location.localtime })
-		setForecastWeather({ ...data.forecastWeather, cityName: cityName })
+		const cityLocation = data.location.region.length !== 0 ?
+			`${data.location.region}, ${data.location.country}` :
+			data.location.country
+		setCurrentWeather({
+			...data.current, cityName: data.location.name,
+			cityLocation: cityLocation,
+			localtime: data.location.localtime
+		})
+		setForecastWeather({
+			...data.forecastWeather, cityName: data.location.name,
+			cityLocation: cityLocation
+		})
+	}
+
+	let themeIcon = ''
+	if (theme === 'light-theme') {
+		themeIcon = "bi bi-brightness-high-fill"
+	} else {
+		themeIcon = "bi bi-moon-fill"
 	}
 
 	return (
-		<div className="App">
+		<div className={`App ${theme}`}>
 			<nav className="navbar">
-				<h1 className="title">Weather App</h1>
-				<button>dark/light</button>
+				<h1 className="navbar-title">Weather App</h1>
+				<button className='theme-toggle-button'
+					onClick={() => toggleTheme()}>
+					<i className={themeIcon}></i>
+				</button>
 			</nav>
 			<div className="main">
 				<SearchBar

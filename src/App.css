@@ -1,0 +1,94 @@
+:root {
+    --text-primary-light: #333333;
+    --text-primary-dark: #FFFFFF;
+  
+    --text-secondary-light: #464646;
+    --text-secondary-dark: #a0a0a0;
+  
+    --bg-primary-light: #F5F5F5;
+    --bg-primary-dark: #121212 ;
+
+    --bg-secondary-light: #ebebeb;
+    --bg-secondary-dark: #0C0C0C;
+  
+    --bg-navbar-light: #333333;
+    --bg-navbar-dark: #FFD54F;
+
+    --bg-card-light: #FFD54F;
+    --bg-card-dark: #1F2124;
+
+    --accent-light: #1976D2;
+    --accent-dark: #4fa4fa;
+  }
+  
+  .light-theme {
+    --text-primary: var(--text-primary-light);
+    --text-secondary: var(--text-secondary-light);
+    --bg-primary: var(--bg-primary-light);
+    --bg-secondary: var(--bg-secondary-light);
+    --bg-navbar: var(--bg-navbar-light);
+    --bg-card: var(--bg-card-light);
+    --accent: var(--accent-light);
+  }
+  
+  .dark-theme {
+    --text-primary: var(--text-primary-dark);
+    --text-secondary: var(--text-secondary-dark);
+    --bg-primary: var(--bg-primary-dark);
+    --bg-secondary: var(--bg-secondary-dark);
+    --bg-navbar: var(--bg-navbar-dark);
+    --bg-card: var(--bg-card-dark);
+    --accent: var(--accent-dark);
+  }
+  
+body {
+    margin: 0;
+    background-color: var(--bg-primary);
+    font-family: 'Open Sans', sans-serif;
+}
+
+.App {
+    min-height: 100vh;
+    padding: 0;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Open Sans', sans-serif;
+    transition: ease 0.3s;
+  }
+
+/* Navbar */
+.navbar {
+    background-color: var(--bg-navbar);
+    color: var(--bg-primary);
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.navbar-title {
+    font-weight: 900;
+    color: var(--bg-primary);
+    margin: 0;
+    margin-left: 20px;
+}
+
+
+.theme-toggle-button {
+    background-color: transparent;
+    border: none;
+    color: var(--bg-primary);
+    margin-right: 20px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+
+@media screen and (max-width: 600px) {
+
+    .navbar-title,
+    .theme-toggle-button {
+        margin: 0 10px;
+    }
+}
