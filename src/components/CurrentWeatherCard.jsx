@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
-import WeatherIcons from '../../data/WeatherIcons'
-import './CurrentWeatherCard.css'
+import WeatherIcons from '../data/WeatherIcons'
 
 const CurrentWeatherCard = ({ weather }) => {
     const localtime = weather.localtime
@@ -23,22 +22,21 @@ const CurrentWeatherCard = ({ weather }) => {
     }
 
     return (
-        <div className="weather-card">
-            <h2 className="weather-card-title">{weather.cityName}</h2>
-            <p className="weather-card-location">{weather.cityLocation}</p>
-            <p className="weather-card-date">{combinedDateTime}</p>
-            <div className="weather-card-condition">
-                <i className={icon}></i>
-                <div className="weather-card-condition-details">
-                    <h3 className="weather-card-condition-text">{weather.condition.text}</h3>
-                    <p className="weather-card-temp"><b>{`${weather.temp_c}°`}</b>C</p>
-
+        <div className="max-w-xs mx-auto bg-blue-300 dark:bg-blue-800 dark:text-white shadow-md rounded p-6">
+            <h2 className="text-2xl font-semibold mb-2">{weather.cityName}</h2>
+            <p className="text-xl">{weather.cityLocation}</p>
+            <p className="text-gray-500 dark:text-gray-400 mb-4">{combinedDateTime}</p>
+            <div className="flex items-center">
+                <i className={icon} style={{ fontSize: '110px' }}></i>
+                <div className="ml-4">
+                    <h3 className="text-2xl font-semibold mb-1">{weather.condition.text}</h3>
+                    <p className="text-4xl font-bold">{weather.temp_c}°C</p>
                 </div>
             </div>
-            <div className="weather-card-details">
-                <p><b>Real feel</b>{`${weather.feelslike_c} °C`}</p>
-                <p><b>Wind</b>{`${weather.wind_kph} km/h`}</p>
-                <p><b>Humidity</b>{`${weather.humidity}%`}</p>
+            <div className="mt-4">
+                <p><b>Real feel</b> {weather.feelslike_c}°C</p>
+                <p><b>Wind</b> {weather.wind_kph} km/h</p>
+                <p><b>Humidity</b> {weather.humidity}%</p>
             </div>
         </div>
     )

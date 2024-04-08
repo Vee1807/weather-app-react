@@ -1,8 +1,8 @@
 import './App.css'
 import SearchBar from './components/SearchBar/SearchBar'
-import WeatherCard from './components/CurrentWeatherCard/CurrentWeatherCard'
-import { useState, useEffect, useContext } from 'react'
-import { ThemeContext } from "./Theme.jsx"
+import WeatherCard from './components/CurrentWeatherCard.jsx'
+import { useState, useEffect } from 'react'
+import Navbar from './components/Navbar.jsx'
 
 const API_KEY = '75b36898c1284f41a32114039240704'
 const citySuggestionsURL = `https://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=`
@@ -10,8 +10,6 @@ const getCurrentWeatherURL = (coord) => {
 	return `https://api.weatherapi.com/v1/forecast.json?key=75b36898c1284f41a32114039240704&q=${coord}&days=3&aqi=no&alerts=no`
 }
 const App = () => {
-
-	const { theme, toggleTheme } = useContext(ThemeContext)
 
 
 	const [city, setCity] = useState('')
@@ -72,22 +70,9 @@ const App = () => {
 		})
 	}
 
-	let themeIcon = ''
-	if (theme === 'light-theme') {
-		themeIcon = "bi bi-brightness-high-fill"
-	} else {
-		themeIcon = "bi bi-moon-fill"
-	}
-
 	return (
-		<div className={`App ${theme}`}>
-			<nav className="navbar">
-				<h1 className="navbar-title">Weather App</h1>
-				<button className='theme-toggle-button'
-					onClick={() => toggleTheme()}>
-					<i className={themeIcon}></i>
-				</button>
-			</nav>
+		<div className="App">
+			<Navbar />
 			<div className="main">
 				<SearchBar
 					city={city}
