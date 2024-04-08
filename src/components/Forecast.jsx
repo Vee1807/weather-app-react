@@ -5,7 +5,7 @@ const Forecast = ({ weather }) => {
     console.log("weather: ")
     console.log(weather)
     const daysForecast = weather.map((day, index) => {
-        return <ForecastDay dayWeather={day} key={index}/>
+        return <ForecastDay dayWeather={day} index={index} key={index}/>
     })
     return (
         <div>

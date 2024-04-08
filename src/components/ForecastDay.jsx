@@ -6,7 +6,7 @@ const getDate = (dateStr) => {
 
     const dayOfWeek = date.getDay()
 
-    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
     const dayOfWeekString = days[dayOfWeek]
 
     const dayMonth = date.toLocaleDateString('en-GB', {
@@ -17,7 +17,7 @@ const getDate = (dateStr) => {
     return { day: dayOfWeekString, date: dayMonth }
 }
 
-const ForecastDay = ({ dayWeather }) => {
+const ForecastDay = ({ dayWeather, index }) => {
     const date = getDate(dayWeather.date)
     const weatherCode = dayWeather.day.condition.code
     let icon = ""
@@ -31,13 +31,16 @@ const ForecastDay = ({ dayWeather }) => {
     return (
         <div className="py-3 px-7 border-b-2 dark:border-gray-900 w-full text-black dark:text-white">
             <div className="grid grid-cols-12">
-                <div className='col-span-3 flex flex-col items-start justify-center sm:text-xl xs:text-base text-sm'><b className='text-amber-600 dark:text-amber-300'>{date.day}</b><p>{date.date}</p></div>
+                <div className='col-span-3 flex flex-col items-start justify-center sm:text-xl xs:text-base text-sm'>
+                    <b className='font-black text-amber-600 dark:text-amber-300'>{index === 0 ? 'TODAY' : date.day}</b>
+                    <p className='text-gray-600 dark:text-gray-400 sm:text-base xs:text-sm text-xs'>{date.date}</p>
+                </div>
 
                 <div className='col-span-5 flex items-center  '>
                     <i className={icon + ' sm:text-5xl xs:text-4xl text-3xl mr-2'}></i>
                     <div className="h-fit flex flex-col ">
                         <b className="sm:text-2xl xs:text-xl text-base">{`${dayWeather.day.maxtemp_c}°`}</b>
-                        <div className="sm:text-xl xs:text-base text-sm">{`${dayWeather.day.mintemp_c}°`}</div>
+                        <div className="text-gray-600 dark:text-gray-400 sm:text-xl xs:text-base text-sm">{`${dayWeather.day.mintemp_c}°`}</div>
                     </div>
                 </div>
 
@@ -46,15 +49,15 @@ const ForecastDay = ({ dayWeather }) => {
                 </div>
 
             </div>
-            <div className="grid grid-cols-2 mt-5 sm:text-base xs-text-sm text-xs ">
+            <div className="grid grid-cols-2 mt-5 sm:text-base xs-text-sm text-xs text-gray-600 dark:text-gray-400">
                 <div>
-                    <p><b>Wind - </b> {dayWeather.day.maxwind_kph} km/h</p>
-                    <p><b>Humidity - </b> {dayWeather.day.avghumidity}%</p>
+                    <p><b className="text-gray-700 dark:text-gray-300">Wind: </b> {dayWeather.day.maxwind_kph} km/h</p>
+                    <p><b className="text-gray-700 dark:text-gray-300">Humidity: </b> {dayWeather.day.avghumidity}%</p>
                 </div>
 
                 <div className='justify-self-end text-right'>
-                    <p><b>Rain - </b> {dayWeather.day.daily_chance_of_rain}%</p>
-                    <p><b>Snow - </b> {dayWeather.day.daily_chance_of_snow}%</p>
+                    <p><b className="text-gray-700 dark:text-gray-300">Rain: </b> {dayWeather.day.daily_chance_of_rain}%</p>
+                    <p><b className="text-gray-700 dark:text-gray-300">Snow: </b> {dayWeather.day.daily_chance_of_snow}%</p>
                 </div>
 
 
