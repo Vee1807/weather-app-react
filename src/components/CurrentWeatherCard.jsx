@@ -29,7 +29,7 @@ const CurrentWeatherCard = ({ weather }) => {
                 <p className="text-gray-300 dark:text-gray-400 mt-3">{combinedDateTime}</p>
             </div>
             
-            <div className="flex items-center">
+            <div className="flex items-center my-5">
                 <div className='sm:text-9xl xs:text-8xl text-7xl'>
                 <i className={icon}></i>
                 </div>
