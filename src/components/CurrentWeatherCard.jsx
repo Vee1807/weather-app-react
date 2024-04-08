@@ -12,7 +12,7 @@ const CurrentWeatherCard = ({ weather }) => {
     let icon = ""
     const iconData = WeatherIcons[weatherCode]
     if (iconData === undefined) {
-        icon = "bi bi-question-circle-fill"
+        icon = "bi bi-thermometer-half"
     } else {
         if (weather.is_day === 1) {
             icon = iconData["iconDay"]
@@ -22,21 +22,26 @@ const CurrentWeatherCard = ({ weather }) => {
     }
 
     return (
-        <div className="max-w-xs mx-auto bg-blue-300 dark:bg-blue-800 dark:text-white shadow-md rounded p-6">
-            <h2 className="text-2xl font-semibold mb-2">{weather.cityName}</h2>
-            <p className="text-xl">{weather.cityLocation}</p>
-            <p className="text-gray-500 dark:text-gray-400 mb-4">{combinedDateTime}</p>
+        <div className="flex flex-col justify-between w-full text-white bg-blue-600 dark:bg-blue-900 shadow-md rounded p-6">
+            <div>
+                <h2 className="xs:text-2xl text-xl font-semibold mb-2">{weather.cityName}</h2>
+                <p className="xs:text-xl text-base">{weather.cityLocation}</p>
+                <p className="text-gray-300 dark:text-gray-400 mt-3">{combinedDateTime}</p>
+            </div>
+            
             <div className="flex items-center">
-                <i className={icon} style={{ fontSize: '110px' }}></i>
-                <div className="ml-4">
-                    <h3 className="text-2xl font-semibold mb-1">{weather.condition.text}</h3>
-                    <p className="text-4xl font-bold">{weather.temp_c}°C</p>
+                <div className='sm:text-9xl xs:text-8xl text-7xl'>
+                <i className={icon}></i>
+                </div>
+                <div className="ml-10">
+                    <h3 className="sm:text-3xl xs:text-xl text-base font-extrabold mb-1">{weather.condition.text}</h3>
+                    <p className="sm:text-5xl xs:text-3xl text-2xl font-semibold">{weather.temp_c}°C</p>
                 </div>
             </div>
-            <div className="mt-4">
-                <p><b>Real feel</b> {weather.feelslike_c}°C</p>
-                <p><b>Wind</b> {weather.wind_kph} km/h</p>
-                <p><b>Humidity</b> {weather.humidity}%</p>
+            <div className="mt-4 sm:text-xl xs:text-base text-sm">
+                <p className='flex justify-between'><b>Real feel</b> {weather.feelslike_c}°C</p>
+                <p className='flex justify-between'><b>Wind</b> {weather.wind_kph} km/h</p>
+                <p className='flex justify-between'><b>Humidity</b> {weather.humidity}%</p>
             </div>
         </div>
     )

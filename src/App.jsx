@@ -1,8 +1,10 @@
-import './App.css'
-import SearchBar from './components/SearchBar/SearchBar'
+import SearchBar from './components/SearchBar.jsx'
 import WeatherCard from './components/CurrentWeatherCard.jsx'
 import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar.jsx'
+import Forecast from './components/Forecast.jsx'
+import Footer from './components/Footer.jsx'
+
 
 const API_KEY = '75b36898c1284f41a32114039240704'
 const citySuggestionsURL = `https://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=`
@@ -64,23 +66,27 @@ const App = () => {
 			cityLocation: cityLocation,
 			localtime: data.location.localtime
 		})
-		setForecastWeather({
-			...data.forecastWeather, cityName: data.location.name,
-			cityLocation: cityLocation
-		})
+		setForecastWeather(data.forecast.forecastday)
 	}
 
 	return (
-		<div className="App">
+		<div className="font-sans min-h-screen flex flex-col dark:text-white text-black ">
 			<Navbar />
-			<div className="main">
-				<SearchBar
-					city={city}
-					handleCityChange={handleCityChange}
-					handleCityClick={handleCityClick}
-					citySuggestions={citySuggestions} />
+			<div className='sm:w-4/5 w-11/12 mx-auto flex-grow'>
+					<SearchBar
+						city={city}
+						handleCityChange={handleCityChange}
+						handleCityClick={handleCityClick}
+						citySuggestions={citySuggestions} />
+				{(currentWeather && forecastWeather) &&
+					<div className='mx-auto mb-7 grid xl:grid-cols-2 gap-5'>
+						<WeatherCard weather={currentWeather} />
+						<Forecast weather={forecastWeather} />
+					</div>
+
+				}
 			</div>
-			{currentWeather && <WeatherCard weather={currentWeather} />}
+			<Footer />
 		</div>
 	);
 }

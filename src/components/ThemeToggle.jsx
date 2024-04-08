@@ -13,7 +13,7 @@ const getIcon = (theme) => {
 	if (theme === "dark") {
 		return "bi bi-moon-fill"
 	} else {
-		return "bi bi-brightness-high-fill"
+		return "bi bi-brightness-low-fill"
 	}
 }
 
@@ -39,7 +39,7 @@ const ThemeToggle = () => {
 	}, [theme])
 
 	return (
-		<div className="text-xl" onClick={handleClick}>
+		<div className="text-3xl dark:text-xl text-amber-500 dark:text-white" onClick={handleClick}>
 			<i className={getIcon(theme)}></i>
 		</div>
 	)
