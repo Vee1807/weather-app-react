@@ -38,10 +38,10 @@ const CurrentWeatherCard = ({ weather }) => {
                     <p className="sm:text-5xl xs:text-3xl text-2xl font-semibold">{weather.temp_c}°C</p>
                 </div>
             </div>
-            <div className="mt-4 sm:text-xl xs:text-base text-sm">
-                <p className='flex justify-between mb-3 pb-3 border-b border-blue-500 dark:border-gray-400'><b>Real feel</b> {weather.feelslike_c}°C</p>
-                <p className='flex justify-between mb-3 pb-3 border-b border-blue-500 dark:border-gray-400'><b>Wind</b> {weather.wind_kph} km/h</p>
-                <p className='flex justify-between'><b>Humidity</b> {weather.humidity}%</p>
+            <div className="mt-4 sm:text-xl xs:text-base text-sm text-gray-300 dark:text-gray-400">
+                <p className='flex justify-between mb-3 pb-3 border-b border-blue-500 dark:border-gray-400'><b className='text-white'>Real feel</b> {weather.feelslike_c}°C</p>
+                <p className='flex justify-between mb-3 pb-3 border-b border-blue-500 dark:border-gray-400'><b className='text-white'>Wind</b> {weather.wind_kph} km/h</p>
+                <p className='flex justify-between'><b className='text-white'>Humidity</b> {weather.humidity}%</p>
             </div>
         </div>
     )
