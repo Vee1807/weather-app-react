@@ -22,7 +22,7 @@ const CurrentWeatherCard = ({ weather }) => {
     }
 
     return (
-        <div className="flex flex-col justify-between w-full text-white bg-blue-600 dark:bg-blue-900 shadow-md rounded p-6">
+        <div className="flex flex-col justify-between w-full text-white bg-blue-600 dark:bg-blue-900 shadow-md rounded-lg p-6">
             <div>
                 <h2 className="xs:text-2xl text-xl font-semibold mb-2">{weather.cityName}</h2>
                 <p className="xs:text-xl text-base">{weather.cityLocation}</p>

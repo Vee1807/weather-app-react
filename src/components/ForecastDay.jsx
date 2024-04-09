@@ -32,14 +32,15 @@ const ForecastDay = ({ dayWeather, index }) => {
     }
 
     return (
-        <div className="flex flex-col py-3 px-7 border-b-2 h-full dark:border-gray-900 w-full text-black dark:text-white">
+        <div onClick={() => setIsOpen(prev => !prev)} 
+        className="bg-transparent hover:bg-gray-200 hover:dark:bg-gray-900 flex flex-col py-3 px-7 border-b-2 h-full dark:border-gray-900 w-full text-black dark:text-white">
             <div className="grid grid-cols-12 flex-grow">
                 <div className='col-span-3 flex flex-col items-start justify-center sm:text-xl xs:text-base text-sm'>
                     <b className='font-black text-amber-600 dark:text-amber-300'>{index === 0 ? 'TODAY' : date.day}</b>
                     <p className='text-gray-600 dark:text-gray-400 sm:text-base xs:text-sm text-xs'>{date.date}</p>
                 </div>
 
-                <div className='col-span-5 flex items-center  '>
+                <div className='col-span-5 flex items-center'>
                     <i className={icon + ' sm:text-5xl xs:text-4xl text-3xl mr-2'}></i>
                     <div className="h-fit flex flex-col ">
                         <b className="sm:text-2xl xs:text-xl text-base">{`${dayWeather.day.maxtemp_c}°`}</b>
@@ -53,8 +54,7 @@ const ForecastDay = ({ dayWeather, index }) => {
 
             </div>
             <div className='flex justify-end'>
-            <button style={{WebkitTextStroke: '1px'}} className='font-black text-amber-600 dark:text-amber-300 '
-                onClick={() => setIsOpen(prev => !prev)}>
+            <button style={{WebkitTextStroke: '1px'}} className='font-black text-amber-600 dark:text-amber-300'>
                 <i className={"bi bi-chevron-" + (isOpen ? 'up' : 'down')}></i>
             </button>                
             </div>

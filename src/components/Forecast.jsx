@@ -8,7 +8,7 @@ const Forecast = ({ weather }) => {
         return <ForecastDay dayWeather={day} index={index} key={index}/>
     })
     return (
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col justify-between overflow-hidden rounded-lg ">
             {daysForecast}
         </div>
     )
