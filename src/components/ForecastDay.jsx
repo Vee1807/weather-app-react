@@ -49,7 +49,7 @@ const ForecastDay = ({ dayWeather, index }) => {
 					<i className={"bi bi-chevron-" + (isOpen ? 'up' : 'down')}></i>
 				</button>
 			</div>
-			<div className={`overflow-hidden transition-max-height duration-700 ease-in-out ${isOpen ? 'max-h-screen' : 'max-h-0'}`}>
+			<div className={`overflow-hidden flex flex-col justify-end transition-height duration-300 ease-in-out ${isOpen ? 'h-11 visible' : 'h-0 invisible'}`}>
 
 				{isOpen &&
 					<div className="grid grid-cols-2 mt-5 sm:text-base xs-text-sm text-xs text-gray-600 dark:text-gray-400">
