@@ -7,6 +7,7 @@ Check out the demo [here](https://vee1807.github.io/weather-app-react/).
 ## Features
 
 - View current weather conditions and a 3-day forecast for any city.
+- Display weather based on user's location.
 - Toggle between light and dark mode for better readability
 - Simple and intuitive user interface
 
@@ -46,14 +47,16 @@ To run the app locally, follow these steps:
 
 - Enter the name of a city or part of it in the search bar, then select it to view the current weather conditions and the 3-day forecast for that city.
 - Toggle between light and dark mode using the theme switcher button.
+- The app automatically fetches and displays the weather for the user's location upon page load or reload.
+
 
 ## Technologies Used
 
 - React
 - Node.js (for development environment)
-- OpenWeatherMap API
+- Weather API
 - Tailwind CSS
 
 ## Credits
 
-- Weather data provided by [OpenWeatherMap](https://openweathermap.org/)
+- Weather data provided by [Weather API](https://www.weatherapi.com/)
