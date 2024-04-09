@@ -28,10 +28,10 @@ const CurrentWeatherCard = ({ weather }) => {
                 <p className="xs:text-xl text-base">{weather.cityLocation}</p>
                 <p className="text-gray-300 dark:text-gray-400 mt-3">{combinedDateTime}</p>
             </div>
-            
+
             <div className="flex items-center my-5">
                 <div className='sm:text-9xl xs:text-8xl text-7xl'>
-                <i className={icon}></i>
+                    <i className={icon}></i>
                 </div>
                 <div className="ml-10">
                     <h3 className="sm:text-3xl xs:text-xl text-base font-extrabold mb-1">{weather.condition.text}</h3>
