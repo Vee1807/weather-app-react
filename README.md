@@ -2,7 +2,7 @@
 
 This is a simple weather app built with React. It allows users to check the current weather conditions and a 3-day forecast for different locations.
 
-Check out the demo [here](https://vee1807.github.io/weather-app-react/).
+Check out the demo [here](https://vanykardjikian.github.io/weather-app-react/).
 
 ## Features
 
