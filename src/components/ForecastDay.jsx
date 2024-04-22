@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import WeatherIcons from '../data/WeatherIcons'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+
 const getDate = (dateStr) => {
 	const date = new Date(dateStr)
 	const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
@@ -49,21 +51,28 @@ const ForecastDay = ({ dayWeather, index }) => {
 					<i className={"bi bi-chevron-" + (isOpen ? 'up' : 'down')}></i>
 				</button>
 			</div>
-			<div className={`overflow-hidden flex flex-col justify-end transition-height duration-300 ease-in-out ${isOpen ? 'h-11 visible' : 'h-0 invisible'}`}>
+			<div className={`overflow-hidden flex flex-col justify-end transition-height duration-300 ease-in-out ${isOpen ? 'h-20 visible' : 'h-0 invisible'}`}>
 
 				{isOpen &&
-					<div className="grid grid-cols-2 mt-5 sm:text-base xs-text-sm text-xs text-gray-600 dark:text-gray-400">
-						<div>
-							<p><b className="text-gray-700 dark:text-gray-300">Wind: </b> {dayWeather.day.maxwind_kph} km/h</p>
-							<p><b className="text-gray-700 dark:text-gray-300">Humidity: </b> {dayWeather.day.avghumidity}%</p>
+					<div className='flex flex-col items-end'>
+						<div className="w-full grid grid-cols-2 mt-5 sm:text-base xs-text-sm text-xs text-gray-600 dark:text-gray-400">
+							<div>
+								<p><b className="text-gray-700 dark:text-gray-300">Wind: </b> {dayWeather.day.maxwind_kph} km/h</p>
+								<p><b className="text-gray-700 dark:text-gray-300">Humidity: </b> {dayWeather.day.avghumidity}%</p>
+							</div>
+
+							<div className='justify-self-end text-right'>
+								<p><b className="text-gray-700 dark:text-gray-300">Rain: </b> {dayWeather.day.daily_chance_of_rain}%</p>
+								<p><b className="text-gray-700 dark:text-gray-300">Snow: </b> {dayWeather.day.daily_chance_of_snow}%</p>
+							</div>
+
+
 						</div>
-
-						<div className='justify-self-end text-right'>
-							<p><b className="text-gray-700 dark:text-gray-300">Rain: </b> {dayWeather.day.daily_chance_of_rain}%</p>
-							<p><b className="text-gray-700 dark:text-gray-300">Snow: </b> {dayWeather.day.daily_chance_of_snow}%</p>
-						</div>
-
-
+						<Link to='/hourly'
+							state={{ weather: dayWeather.hour, date: dayWeather.date}}
+							className='sm:text-sm text-xs text-blue-500 dark:text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 w-fit font-semibold underline-offset-2 py-1 mt-1 transition'
+						> 
+							See hourly <i className="bi bi-arrow-right-short"></i></Link>
 					</div>}
 			</div>
 		</div>
