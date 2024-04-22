@@ -22,25 +22,26 @@ const HourlyCard = ({ weather }) => {
 
         <div onClick={() => setIsOpen(prev => !prev)}
             className="bg-transparent hover:bg-gray-200 hover:dark:bg-gray-900 flex flex-col py-3 px-7 border-b-2 h-full dark:border-gray-900 w-full text-black dark:text-white">
-            <div className="grid grid-cols-12 flex-grow">
-                <div className='col-span-3 flex flex-col items-start justify-center sm:text-2xl xs:text-xl text-base'>
+            <div className="grid grid-cols-4 flex-grow gap-7">
+                <div className='flex flex-col items-start justify-center sm:text-2xl xs:text-xl text-base'>
                     <b className='font-black text-amber-600 dark:text-amber-300'>{time}</b>
                 </div>
 
-                <div className='col-span-3 flex flex-wrap'>
+                
+                <div className='flex flex-wrap'>
                     <i className={icon + ' sm:text-5xl xs:text-4xl text-3xl mr-2'}></i>
-                    <div className="text-gray-700 dark:text-gray-300 sm:text-2xl xs:text-xl text-base">{`${weather.temp_c}°C`}</div>
+                    <div className="text-gray-700 dark:text-gray-300 sm:text-2xl xs:text-base text-sm">{`${weather.temp_c}°C`}</div>
 
                 </div>
 
-                <div className="col-span-2 text-gray-800 dark:text-gray-200 sm:text-2xl xs:text-xl text-base">
+                <div className=" text-gray-800 dark:text-gray-200 sm:text-2xl xs:text-base text-sm">
                     <b>
                         Real Feel:
                     </b>
                     {` ${weather.feelslike_c}°C`}
                 </div>
 
-                <div className="col-span-4 flex items-center justify-self-end">
+                <div className="flex items-center justify-self-end">
                     <h3 className="font-bold sm:text-xl xs:text-base text-sm text-right">{weather.condition.text}</h3>
                 </div>
 
