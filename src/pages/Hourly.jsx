@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import HourlyCard from '../components/HourlyCard'
-
+import { useEffect } from 'react'
 const getDate = (dateStr) => {
     const date = new Date(dateStr)
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
@@ -20,6 +20,10 @@ const Hourly = () => {
     const hourlyForecast = weatherArr.map((weather, index) => {
         return <HourlyCard weather={weather} key={index} />
     })
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, []);
 
     return (
         <div className='mb-10'>
