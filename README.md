@@ -1,15 +1,15 @@
 # Weather App
 
-This is a simple weather app built with React. It allows users to check the current weather conditions and a 3-day forecast for different locations.
+This is a simple weather app built with React. It allows users to check the current weather conditions, 3-day forecasts, and hourly breakdowns for different locations.
 
 Check out the demo [here](https://vanykardjikian.github.io/weather-app-react/).
 
 ## Features
-
-- View current weather conditions and a 3-day forecast for any city.
-- Display weather based on user's location.
-- Toggle between light and dark mode for better readability
-- Simple and intuitive user interface
+- Automatically display weather for the user's current location.
+- View current weather conditions, 3-day forecasts, and hourly breakdowns for any city.
+- Search for cities with autocomplete suggestions.
+- Toggle between light and dark mode (user preference stored in local storage).
+- Smooth animations when expanding forecast sections.
 
 
 
@@ -20,7 +20,7 @@ To run the app locally, follow these steps:
 1. Clone this repository:
 
     ```
-    git clone https://github.com/vee1807/weather-app-react.git
+    git clone https://github.com/vanykardjikian/weather-app-react.git
     ```
 
 2. Navigate to the project directory:
@@ -47,12 +47,14 @@ To run the app locally, follow these steps:
 
 - Enter the name of a city or part of it in the search bar, then select it to view the current weather conditions and the 3-day forecast for that city.
 - Toggle between light and dark mode using the theme switcher button.
+- Expand the forecast sections and click on *See hourly* to view hourly weather breakdown.
 - The app automatically fetches and displays the weather for the user's location upon page load or reload.
 
 
 ## Technologies Used
 
 - React
+- React Router
 - Node.js (for development environment)
 - Weather API
 - Tailwind CSS
