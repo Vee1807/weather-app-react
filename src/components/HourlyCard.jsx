@@ -21,7 +21,7 @@ const HourlyCard = ({ weather }) => {
     return (
 
         <div onClick={() => setIsOpen(prev => !prev)}
-            className="bg-transparent hover:bg-gray-200 hover:dark:bg-gray-900 flex flex-col py-3 px-7 border-b-2 h-full dark:border-gray-900 w-full text-black dark:text-white">
+            className="bg-transparent hover:bg-gray-200 hover:dark:bg-gray-900 flex flex-col py-3 px-5 border-b-2 h-full dark:border-gray-900 w-full text-black dark:text-white">
             <div className="grid grid-cols-4 items-center">
                 <b className='sm:text-2xl xs:text-xl text-base font-black text-amber-600 dark:text-amber-300'>{time}</b>
 
