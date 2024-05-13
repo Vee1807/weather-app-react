@@ -25,7 +25,7 @@ const HourlyCard = ({ weather }) => {
             <div className="grid grid-cols-4 items-center">
                 <b className='sm:text-2xl xs:text-xl text-base font-black text-amber-600 dark:text-amber-300'>{time}</b>
 
-                <div className="flex items-center col-span-2">
+                <div className="flex items-center col-span-2 mr-3">
                     <div className='flex items-center'>
                         <i className={icon + ' sm:text-5xl xs:text-4xl text-3xl'}></i>
                     </div>
